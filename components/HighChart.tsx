@@ -33,6 +33,9 @@ export default function HighCharts() {
               xAxis: {
                 categories: jsonData.map((row: any) => row.data),
               },
+              yAxis: {
+                max: 4000
+              },
               series: [
                 {
                   name: 'Data',
@@ -88,6 +91,9 @@ export default function HighCharts() {
               },
               xAxis: {
                 categories: jsonData.map((row: any) => row.data),
+              },
+              yAxis: {
+                max: 4000
               },
               series: [
                 {

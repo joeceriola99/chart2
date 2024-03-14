@@ -35,9 +35,10 @@ export default function ChartsJs() {
           const name = jsonData.map((row: any) => row.name);
           const data = jsonData.map((row: any) => row.data);
           const time = jsonData.map((row: any) => row.time);
-  
+          const labels = Array.from({ length: name.length }, (_, i) => i.toString());
+          
             const chartData = {
-              labels: [...data],
+              labels: labels,
               datasets: [
                 {
                   label: 'Data',

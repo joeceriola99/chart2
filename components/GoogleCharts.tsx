@@ -25,11 +25,12 @@ export default function GoogleCharts() {
               throw new Error(`Error fetching data: ${response.statusText}`);
             }
             const jsonData = await response.json();
-            
-            const data = [
-              ['Name', 'Data', 'Time'],
-              ...jsonData
-            ]
+
+            const data = [...jsonData]
+
+            for (let i = 0; i < data.length; i++) {
+              data[i] = [`${i + 1}`, ...data[i]];
+            }
             console.log(data)
   
             setGoogleChartData(data);
@@ -82,10 +83,11 @@ export default function GoogleCharts() {
           }
           const jsonData = await response.json();
           
-          const data = [
-            ['Name', 'Data', 'Time'],
-            ...jsonData
-          ]
+          const data = [...jsonData]
+
+          for (let i = 0; i < data.length; i++) {
+            data[i] = [`${i + 1}`, ...data[i]];
+          }
           console.log(data)
   
           setGoogleChartData(data);
@@ -137,8 +139,17 @@ export default function GoogleCharts() {
                       chartType="LineChart"
                       width="400px"
                       height="250px"
-                      data={googleChartData}
-                      options={googleChartOptions}
+                      data={[
+                        ['Name', 'Data', 'Time'],
+                        ...googleChartData]}
+                      options={{
+                        hAxis: {
+                          title: "Data",
+                        },
+                        vAxis: {
+                          title: "Time",
+                        },
+                      }}
                       />
                     </div>
                   </div>
